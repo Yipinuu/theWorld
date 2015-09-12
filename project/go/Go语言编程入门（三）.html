@@ -1,0 +1,30 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="description" content="是游悠品意的个人站点，现在主要是技术文章和个人作品发表"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="alternative" href="/atom.xml" title="照东方万八千世界" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>Go语言编程入门（三） - 照东方万八千世界</title><link rel="stylesheet" href="/css/main.css" type="text/css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--></head><body><header class="head"><h1 class="head-title u-fl"><a href="/">照东方万八千世界</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a href="/" class="head-nav__link">Home</a></li><li class="head-nav__item"><a href="/archives" class="head-nav__link">Archives</a></li><li class="head-nav__item"><a href="http://Lofter.yipinuu.com" class="head-nav__link">Photo</a></li><li class="head-nav__item"><a href="/about.html" class="head-nav__link">About</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"><time datetime="2015-09-12T08:01:58.000Z" class="post__time">九月 12, 2015</time><h1 class="post__title"><a href="/project/go/Go语言编程入门（三）.html">Go语言编程入门（三）</a></h1></header><div class="post__main echo"><h2 id="常量">常量</h2><ul>
+<li>常量使用关键字 const 定义。 储存在常量的数据类型，只能是布尔型，数字型和字符串型。</li>
+<li><p>常量的定义是格式</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> identifier[<span class="keyword">type</span>] = value</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Go语言中常量的定义可以省略说明符[type]</p>
+</li>
+<li>常量的值必须在编译中就可以确定的。如：它不能是自定义函数，自定义函数属于未知。但是可以使用内置函数。</li>
+<li>常量允许并行赋值，也可以用作枚举。</li>
+<li>常量的大小是可以由精度来定义的，低精度赋值给高精度容易溢出。</li>
+<li>iota 初始值为0，每在新一行被使用时，值加1。<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const (</span><br><span class="line">    <span class="keyword">Sunday</span> = iota</span><br><span class="line">    <span class="keyword">Monday</span></span><br><span class="line">    <span class="keyword">Tuesday</span></span><br><span class="line">    <span class="keyword">Wednesday</span></span><br><span class="line">    <span class="keyword">Thursday</span></span><br><span class="line">    <span class="keyword">Friday</span></span><br><span class="line">    <span class="keyword">Saturday</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="变量">变量</h2><ul>
+<li>变量使用关键字 var 定义。</li>
+<li><p>变量的定义格式。变量将变量类型放在变量名称之后。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> identifier <span class="keyword">type</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当变量被申明后，系统会自动赋予它们该类型的零值。</p>
+</li>
+<li>变量名的书写采用驼峰式。但如果你期待你的变量被外部包所使用，则首字母需要为大写。</li>
+<li>变量可以在编译时被赋值，也可以在运行时被赋值。</li>
+<li>当你在函数体内定义局部变量，应该使用 <code>:=</code>。<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">  <span class="string">"fmt"</span></span><br><span class="line">  <span class="string">"os"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> main() &#123;</span><br><span class="line">  <span class="keyword">var</span> goos <span class="typename">string</span> = os.Getenv(<span class="string">"GOOS"</span>)</span><br><span class="line">  fmt.Printf(<span class="string">"The operating system is: %s\n"</span>, goos)</span><br><span class="line">  path := os.Getenv(<span class="string">"PATH"</span>)</span><br><span class="line">  fmt.Printf(<span class="string">"Path is %s\n"</span>, path)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</div><footer class="post__foot u-cf"><a href="/project/go/Go语言编程入门（三）.html#disqus_thread" class="post__foot-link u-fr">0 COMMENTS</a></footer></article><div class="comments"><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript></div></div></main><footer class="foot"><div class="foot-copy u-fl">&copy; 2015 游悠品意</div><menu class="page-menu u-fr"><li class="page-menu__item"><span title="Previous" class="page-menu__link icon-arrow-left page-menu__link--disabled"></span></li><li class="page-menu__item"><span title="Next" class="page-menu__link icon-arrow-right page-menu__link--disabled"></span></li></menu></footer><script>(function(h,g,l,k,j,i){j=h.createElement(g),i=h.getElementsByTagName(g)[0],
+j.src="//"+l+".disqus.com/"+k+".js",i.parentNode.insertBefore(j,i)})
+(document,"script","yipinuu","embed");
+</script></body></html>
