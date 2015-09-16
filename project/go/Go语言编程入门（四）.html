@@ -1,0 +1,43 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="description" content="是游悠品意的个人站点，现在主要是技术文章和个人作品发表"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="alternative" href="/atom.xml" title="照东方万八千世界" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>Go语言编程入门（四）：基本类型与运算符与字符串 - 照东方万八千世界</title><link rel="stylesheet" href="/css/main.css" type="text/css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--></head><body><header class="head"><h1 class="head-title u-fl"><a href="/">照东方万八千世界</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a href="/" class="head-nav__link">Home</a></li><li class="head-nav__item"><a href="/archives" class="head-nav__link">Archives</a></li><li class="head-nav__item"><a href="http://Lofter.yipinuu.com" class="head-nav__link">Photo</a></li><li class="head-nav__item"><a href="/about.html" class="head-nav__link">About</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"><time datetime="2015-09-14T09:29:36.000Z" class="post__time">九月 14, 2015</time><h1 class="post__title"><a href="/project/go/Go语言编程入门（四）.html">Go语言编程入门（四）：基本类型与运算符与字符串</a></h1></header><div class="post__main echo"><h2 id="数字类型">数字类型</h2><ul>
+<li>int8    (-128 -&gt; 127)</li>
+<li>int16   (-32768 -&gt; 32767)</li>
+<li>int32   (-2,147,483,648 -&gt; 2,147,483,647)</li>
+<li>int64   (-9,223,372,036,854,775,808 -&gt; 9,223,372,036,854,775,807)</li>
+<li>uint8   (0 -&gt; 255)</li>
+<li>uint16  (0 -&gt; 65,535)</li>
+<li>uint32  (0 -&gt; 4,294,967,295)</li>
+<li>uint64  (0 -&gt; 18,446,744,073,709,551,615)</li>
+<li>float32 (+-1e-45 -&gt; -3.4*1e38)</li>
+<li>float64 (+-5<em>1e324 -&gt; 107</em>1e308)</li>
+<li>complex64 (32位实数和虚数)</li>
+<li>complex128 (64位实数和虚数)</li>
+</ul>
+<p>你可以通过增加前缀 0 来表示 8 进制数（如： 077），增加前缀 0x 来表示 16进制数 （如： 0xFF），以及使用 e 来表示10的连乘（如： 1e3 = 1000, 或者 6.022e23 = 6.022*1e23）。</p>
+<p>\x总是紧跟着长度为 2 的 16进制数，\后面跟着长度为3的十进制数，\u 后面紧跟着长度为4的16进制的 Unicode 字符，\U 后面总是紧跟着长度为8的16进制数。</p>
+<p>Go 中不允许不同类型之间的混合使用，但是对于常量的类型限制非常少，因此允许常量之间的混合使用。</p>
+<h3 id="格式化说明符">格式化说明符</h3><ul>
+<li>%d 用于格式化整数</li>
+<li>%x(%X) 用于格式化16进制表示的数字</li>
+<li>%g 用于格式化浮点型</li>
+<li>%f 用于输出浮点数</li>
+<li>%e 输出科学计数表示法</li>
+<li>%0d 用于规定输出定长的证书，其中开头的数字必是0</li>
+<li>%v</li>
+<li>%c 用于表示字符</li>
+<li>%U 输出格式为U+hhhh的字符串</li>
+</ul>
+<h3 id="复数">复数</h3><p>使用 re+imI 来表示，其中 re 代表实数部分， im 代表虚数部分， I 代表根号负 1。</p>
+<h3 id="位运算">位运算</h3><p>二元运算符 按位与&amp; 按位或｜ 按位异或^ 位清除&amp;^<br>一元运算符 按位补足^ 位左移&lt;&lt; 位右移&gt;&gt;</p>
+<h2 id="运算符">运算符</h2><h3 id="运算符的优先级">运算符的优先级</h3><p>|–|–|<br>|优先级|运算符|<br>|7|^ !|<br>|6|* / % &lt;&lt; &gt;&gt; &amp; &amp;^|<br>|5|+ - | ^|<br>|4|== != &lt; &lt;= &gt;= &gt;|<br>|3|&lt;-|<br>|2|&amp;&amp;|<br>|1|<code>||</code> |<br>|–|–|</p>
+<h3 id="unicode_字符">unicode 字符</h3><ul>
+<li>判断是否为字母： unicode.IsLetter(ch)</li>
+<li>判断是否为数字： unicode.IsDigit(ch)</li>
+<li>判断是否为空白符号： unicode.IsSpace(ch)<br>都返回布尔值</li>
+</ul>
+<p>:)运算就这些吧，我觉得运算要在解释器操作才能真的体会到它的含义。</p>
+<h2 id="字符串">字符串</h2><p>字符串是utf-8的一个序列（当字符为ASCⅡ码时则占用1个字节，其他字符需要占用2-4个字节）。<br>字符串是一种值类型，且值不可变，即创建某个文本后你无法再次修改这个文本的内容；更深入地讲，字符串是字节的定长数组。</p>
+</div><footer class="post__foot u-cf"><a href="/project/go/Go语言编程入门（四）.html#disqus_thread" class="post__foot-link u-fr">0 COMMENTS</a></footer></article><div class="comments"><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript></div></div></main><footer class="foot"><div class="foot-copy u-fl">&copy; 2015 游悠品意</div><menu class="page-menu u-fr"><li class="page-menu__item"><span title="Previous" class="page-menu__link icon-arrow-left page-menu__link--disabled"></span></li><li class="page-menu__item"><span title="Next" class="page-menu__link icon-arrow-right page-menu__link--disabled"></span></li></menu></footer><script>(function(h,g,l,k,j,i){j=h.createElement(g),i=h.getElementsByTagName(g)[0],
+j.src="//"+l+".disqus.com/"+k+".js",i.parentNode.insertBefore(j,i)})
+(document,"script","yipinuu","embed");
+</script></body></html>
