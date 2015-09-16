@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="description" content="是游悠品意的个人站点，现在主要是技术文章和个人作品发表"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="alternative" href="/atom.xml" title="照东方万八千世界" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>Go语言编程入门（六）：指针 - 照东方万八千世界</title><link rel="stylesheet" href="/css/main.css" type="text/css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--></head><body><header class="head"><h1 class="head-title u-fl"><a href="/">照东方万八千世界</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a href="/" class="head-nav__link">Home</a></li><li class="head-nav__item"><a href="/archives" class="head-nav__link">Archives</a></li><li class="head-nav__item"><a href="http://Lofter.yipinuu.com" class="head-nav__link">Photo</a></li><li class="head-nav__item"><a href="/about.html" class="head-nav__link">About</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"><time datetime="2015-09-16T09:39:50.000Z" class="post__time">九月 16, 2015</time><h1 class="post__title"><a href="/project/go/Go语言编程入门（六）.html">Go语言编程入门（六）：指针</a></h1></header><div class="post__main echo"><p>Go语言为程序员提供了控制数据结构和指针的能力，但不能进行指针计算。</p>
+<ul>
+<li>程序在内存中存储它的值，每个内存块（或字）有一个地址，通常用十六进制数表示。</li>
+<li>Go语言的取地址符时 &amp;，放到一个变量前使用就会返回相应变量的内存地址。</li>
+<li>如果我们想要调用指针intP，可以这样声明 var intP *int</li>
+<li>一个指针变量可以指向任何一个值的内存地址</li>
+<li>书写 var p *type 时，要记住留空格，复杂的表达式中容易被误认为乘法。</li>
+<li>指针变量通常缩写为 ptr</li>
+<li>符号 <em> 可以放在一个指针前，如 </em>intP ，那么它将得到这个指针指向地址上所存储的值；这被称为反引用（或者内容或者间接引用）操作符；另一种说法是指针转移。</li>
+<li>你不能得到一个文字或者常量的地址</li>
+<li>对一个空指针的反向引用是不合法的，并且会使程序崩溃</li>
+</ul>
+</div><footer class="post__foot u-cf"><a href="/project/go/Go语言编程入门（六）.html#disqus_thread" class="post__foot-link u-fr">0 COMMENTS</a></footer></article><div class="comments"><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript></div></div></main><footer class="foot"><div class="foot-copy u-fl">&copy; 2015 游悠品意</div><menu class="page-menu u-fr"><li class="page-menu__item"><span title="Previous" class="page-menu__link icon-arrow-left page-menu__link--disabled"></span></li><li class="page-menu__item"><span title="Next" class="page-menu__link icon-arrow-right page-menu__link--disabled"></span></li></menu></footer><script>(function(h,g,l,k,j,i){j=h.createElement(g),i=h.getElementsByTagName(g)[0],
+j.src="//"+l+".disqus.com/"+k+".js",i.parentNode.insertBefore(j,i)})
+(document,"script","yipinuu","embed");
+</script></body></html>
