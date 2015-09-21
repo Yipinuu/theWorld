@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="description" content="是游悠品意的个人站点，现在主要是技术文章和个人作品发表"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="alternative" href="/atom.xml" title="照东方万八千世界" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>Go语言编程入门（八） - 照东方万八千世界</title><link rel="stylesheet" href="/css/main.css" type="text/css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--></head><body><header class="head"><h1 class="head-title u-fl"><a href="/">照东方万八千世界</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a href="/" class="head-nav__link">Home</a></li><li class="head-nav__item"><a href="/archives" class="head-nav__link">Archives</a></li><li class="head-nav__item"><a href="http://Lofter.yipinuu.com" class="head-nav__link">Photo</a></li><li class="head-nav__item"><a href="/about.html" class="head-nav__link">About</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"><time datetime="2015-09-18T04:39:46.000Z" class="post__time">九月 18, 2015</time><h1 class="post__title"><a href="/project/Go/notes/Go语言编程入门（八）.html">Go语言编程入门（八）</a></h1></header><div class="post__main echo"><h2 id="for">for</h2><h3 id="基本形式">基本形式</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> 初始化语句; 条件语句; 修饰语句 &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这三部分组成的循环的头部，它们之间使用分号 ; 相隔，但并不需要括号 () 将它们括起来。</li>
+<li>ASCII 编码的字符占用 1 个字节，既每个索引都指向不同的字符，而非 ASCII 编码的字符（占有 2 到 4 个字节）不能单纯地使用索引来判断是否为同一个字符。</li>
+</ul>
+<p><a href="https://github.com/Yipinuu/GoExercises/tree/master/the-way-to-go/chapter5/for1.go" target="_blank" rel="external">for1.go</a><br><a href="https://github.com/Yipinuu/GoExercises/tree/master/the-way-to-go/chapter5/for_string.go" target="_blank" rel="external">for_string.go</a><br><a href="https://github.com/Yipinuu/GoExercises/tree/master/the-way-to-go/chapter5/bitwise_complement.go" target="_blank" rel="external">bitwise_complement.go</a><br><a href="https://github.com/Yipinuu/GoExercises/tree/master/the-way-to-go/chapter5/for_loop.go" target="_blank" rel="external">for_loop.go</a><br><a href="https://github.com/Yipinuu/GoExercises/tree/master/the-way-to-go/chapter5/for_character.go" target="_blank" rel="external">for_character.go</a><br><a href="https://github.com/Yipinuu/GoExercises/tree/master/the-way-to-go/chapter5/fizzbuzz.go" target="_blank" rel="external">fizzbuzz.go</a><br><a href="https://github.com/Yipinuu/GoExercises/tree/master/the-way-to-go/chapter5/rectangle_stars.go" target="_blank" rel="external">rectangle_stars.go</a></p>
+<h3 id="第二形式">第二形式</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> 条件语句 &#123; &#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/Yipinuu/GoExercises/tree/master/the-way-to-go/chapter5/for2.go" target="_blank" rel="external">for2.go</a></p>
+<h3 id="无限循环">无限循环</h3><ul>
+<li>条件语句也是可以被省略的，这些循环的本质就是无限循环</li>
+<li>循环体内必需有相关的条件判断以确保会在某个时刻推出循环</li>
+<li>直接退出循环体，可以使用 break 语句，或者 return 语句直接返回</li>
+<li>无限循环的经典应用是服务器，用于不断等待和接受新的请求</li>
+</ul>
+<h3 id="for-range">for-range</h3><p>一般形式<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ix, val := <span class="keyword">range</span> coll&#123; &#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>val 始终为集合中对应索引的拷贝值，只读</li>
+<li>如果 val 为指针，则会产生指针的拷贝，依旧可以修改集合中的原值</li>
+<li>一个字符串时 Unicode 编码的字符（或称之为 rune）集合</li>
+<li>每个 rune 字符和索引在 for-range 循环中是一一对应，能自动根据 UTF-8 规则识别 Unicode 编码字符<br><a href="https://github.com/Yipinuu/GoExercises/tree/master/the-way-to-go/chapter5/range_string.go：" target="_blank" rel="external">range_string.go：</a></li>
+</ul>
+<h2 id="Break_与_continue">Break 与 continue</h2><p><a href="https://github.com/Yipinuu/GoExercises/tree/master/the-way-to-go/chapter5/for3.go" target="_blank" rel="external">for3.go</a></p>
+<ul>
+<li>每次迭代都会对条件进行检查</li>
+<li>一个break 的作用是跳出该语句出现后的最内部结构，但在 switch 或 select 语句中，break 语句的作用结构是跳过整个代码块，执行后续代码</li>
+</ul>
+<p><a href="https://github.com/Yipinuu/GoExercises/tree/master/the-way-to-go/chapter5/for4.go" target="_blank" rel="external">for4.go</a><br><a href="https://github.com/Yipinuu/GoExercises/tree/master/the-way-to-go/chapter5/for5.go" target="_blank" rel="external">for5.go</a></p>
+<ul>
+<li>continue 忽略剩余的循环体而直接进入下一次的循环过程， continue 只能被用于 for 循环中</li>
+</ul>
+<h2 id="标签与_goto">标签与 goto</h2><p>for 、 switch或者 select 语句都可以配合标签形式的标识符使用。<br><a href="https://github.com/Yipinuu/GoExercises/tree/master/the-way-to-go/chapter5/for5.go" target="_blank" rel="external">for5.go</a><br><a href="https://github.com/Yipinuu/GoExercises/tree/master/the-way-to-go/chapter5/goto.go" target="_blank" rel="external">goto.go</a></p>
+<ul>
+<li>使用标签和 goto 语句是不被鼓励的：它们很快导致非常糟糕的程序设计</li>
+<li>定义但未使用标签会导致编译错误：label … defined and not used</li>
+<li>如果您必须使用 goto，应当只使用正序的标签（标签位于 goto 语句之后），但注意标签和 goto 语句之间不能出现定义新变量的语句，否则会导致编译失败<br><a href="https://github.com/Yipinuu/GoExercises/tree/master/the-way-to-go/chapter5/goto2.go" target="_blank" rel="external">goto2.go</a></li>
+</ul>
+</div><footer class="post__foot u-cf"><a href="/project/Go/notes/Go语言编程入门（八）.html#disqus_thread" class="post__foot-link u-fr">0 COMMENTS</a></footer></article><div class="comments"><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript></div></div></main><footer class="foot"><div class="foot-copy u-fl">&copy; 2015 游悠品意</div><menu class="page-menu u-fr"><li class="page-menu__item"><span title="Previous" class="page-menu__link icon-arrow-left page-menu__link--disabled"></span></li><li class="page-menu__item"><span title="Next" class="page-menu__link icon-arrow-right page-menu__link--disabled"></span></li></menu></footer><script>(function(h,g,l,k,j,i){j=h.createElement(g),i=h.getElementsByTagName(g)[0],
+j.src="//"+l+".disqus.com/"+k+".js",i.parentNode.insertBefore(j,i)})
+(document,"script","yipinuu","embed");
+</script></body></html>
